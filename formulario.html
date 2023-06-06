@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscrição</title>
+</head>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    label{
+        display: block;
+        margin-bottom:10px;
+    }
+    input[type="text"], input[type="email"], input[type="password"], select{
+        width: 300px;
+        padding: 5px;
+        font-size: 16px;
+    }
+    input[type="submit"]{
+         padding: 10px 20px;
+         font-size: 16px;
+         background-color: #4CAF50;
+         COLOR: white;
+         border: nome;
+         cursor: pointer;
+    }
+    input[type="submit"]:hover{
+        background-color:#45a049;
+    }
+</style>
+<body>
+    <h1>Formulario de Inscrição</h1>
+    <form method="POST" action="/form_php/processar_formulario.php">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="data_nascimento"> Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento" required>
+        
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="">Selecione:</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+        </select>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required>
+
+        <label for="faculdade">Faculdade que deseja cursar:</label>
+        <input type="text" id="faculdade" name="faculdade" required>
+
+        <label for="atividade_fisica">Atividade fisica que pratica:</label>
+        <input type="text" id="atividade_fisica" name="atividade_fisica" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <input type="submit" value="Enviar">
+</body>
+</html>
