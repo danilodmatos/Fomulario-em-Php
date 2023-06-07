@@ -69,3 +69,28 @@ if (isset($_POST['senha']) && isset($dadosTratados['senha'])) {
         echo "<p>Senha incorreta!</p>";
     }
 } 
+
+//---------------------------------------------------------------------------------------------------------
+/*Bloco 1: Definindo a função tratarCampo
+
+Neste bloco, estamos criando uma função chamada tratarCampo.
+Essa função recebe dois parâmetros: $campo e $valor, que representam o nome do campo do formulário e o valor associado a esse campo.
+A função realiza algumas operações de tratamento nos valores, como remoção de espaços extras e conversão de caracteres especiais para entidades HTML.
+Em seguida, usamos uma estrutura chamada switch para executar diferentes ações dependendo do valor do campo.
+
+Bloco 2: Tratando os dados recebidos
+Neste bloco, verificamos se a requisição foi feita pelo método POST, ou seja, se o formulário foi submetido.
+Se for uma requisição POST, recebemos os dados do formulário na variável $dados.
+Usamos a função array_map para aplicar a função tratarCampo a cada par chave/valor do array $dados.
+O resultado é armazenado na variável $dadosTratados, que contém os dados tratados e seguros.
+
+Bloco 3: Exibindo os dados recebidos
+Neste bloco, estamos exibindo os dados recebidos do formulário tratados e seguros.
+Usamos um laço de repetição foreach para percorrer cada campo e valor em $dadosTratados.
+Para cada campo, exibimos o nome do campo (com a primeira letra em maiúscula) e o valor correspondente.
+
+Bloco 4: Verificando a senha fornecida
+Neste bloco, estamos verificando se a senha fornecida pelo usuário está correta.
+Primeiro, verificamos se os campos 'senha' existem no array $_POST e $dadosTratados.
+Se existirem, armazenamos a senha fornecida pelo usuário na variável $senhaUsuario e a senha armazenada (previamente criptografada) na variável $senhaArmazenada.
+Usamos a função password_verify para comparar a senha fornecida com a senha armazenada. Se forem iguais, exibimos a mensagem "Senha correta!". Caso contrário, exibimos a mensagem "Senha incorreta!".*/
