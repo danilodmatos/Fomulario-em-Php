@@ -1,4 +1,41 @@
 <?php
+include_once('banco.php');
+
+$nome = $_POST['nome'];
+$data_nascimento = $_POST['data_nascimento'];
+$sexo = $_POST['sexo'];
+$endereco = $_POST['endereco'];
+$faculdade = $_POST['faculdade'];
+$atividade_fisica = $_POST['atividade_fisica'];
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+
+$query = "INSERT INTO for_php(nome, data_nascimento, sexo, endereco, faculdade_desejada, atividade_fisica, email, senha) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+
+try {
+    // Preparar a query
+    $statement = $conexao->prepare($query);
+
+    // Bind dos parâmetros
+    $statement->bindParam(1, $nome);
+    $statement->bindParam(2, $data_nascimento);
+    $statement->bindParam(3, $sexo);
+    $statement->bindParam(4, $endereco);
+    $statement->bindParam(5, $faculdade);
+    $statement->bindParam(6, $atividade_fisica);
+    $statement->bindParam(7, $email);
+    $statement->bindParam(8, $senha);
+
+    // Executar a query
+    $statement->execute();
+
+    // Exibir mensagem de sucesso
+    echo "<p>Dados inseridos com sucesso!</p>";
+} catch (PDOException $e) {
+    // Exibir mensagem de erro
+    echo "<p>Ocorreu um erro ao inserir os dados: " . $e->getMessage() . "</p>";
+}
+
 function tratarCampo($campo, $valor) {
     // Remove espaços extras do valor do campo
     $valor = trim($valor);
