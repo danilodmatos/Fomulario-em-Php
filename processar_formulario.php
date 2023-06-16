@@ -1,6 +1,8 @@
 <?php
+// Inclui o arquivo 'banco.php' que contém as configurações de conexão com o banco de dados e estabelece uma conexão
 include_once('banco.php');
 
+// Recupera os dados do formulário usando o superglobal $_POST e atribui-os a variáveis
 $nome = $_POST['nome'];
 $data_nascimento = $_POST['data_nascimento'];
 $sexo = $_POST['sexo'];
@@ -10,13 +12,14 @@ $atividade_fisica = $_POST['atividade_fisica'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
+// Consulta SQL INSERT para inserir os dados do formulário em uma tabela chamada 'for_php'
 $query = "INSERT INTO for_php(nome, data_nascimento, sexo, endereco, faculdade_desejada, atividade_fisica, email, senha) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 try {
-    // Preparar a query
+    // Preparar a consulta (prepara a query)
     $statement = $conexao->prepare($query);
 
-    // Bind dos parâmetros
+    // Vincula os parâmetros (Bind dos parâmetros)
     $statement->bindParam(1, $nome);
     $statement->bindParam(2, $data_nascimento);
     $statement->bindParam(3, $sexo);
@@ -26,16 +29,17 @@ try {
     $statement->bindParam(7, $email);
     $statement->bindParam(8, $senha);
 
-    // Executar a query
+    //Executa a consulta (Executa a query)
     $statement->execute();
 
-    // Exibir mensagem de sucesso
+    // Exibe mensagem de sucesso
     echo "<p>Dados inseridos com sucesso!</p>";
 } catch (PDOException $e) {
-    // Exibir mensagem de erro
+    // Exibe mensagem de erro
     echo "<p>Ocorreu um erro ao inserir os dados: " . $e->getMessage() . "</p>";
 }
 
+// Função para tratar os campos dos formulários e garantir a segurança dos dados
 function tratarCampo($campo, $valor) {
     // Remove espaços extras do valor do campo
     $valor = trim($valor);
